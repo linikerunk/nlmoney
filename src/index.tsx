@@ -8,18 +8,41 @@ createServer({
     transaction: Model,
   },
 
-  routes() {
-    this.namespace = 'api';
+   seeds(server) {
+     server.db.loadData({
+       transactions: [
+         {
+           id: 1,
+           title: 'Freelance de website',
+           type: 'deposit',
+           category: 'Dev',
+           amount: 6000,
+           createdAt: new Date('2021-02-12 09:00:00'),
+         },
+         {
+          id: 2,
+          title: 'Aluguel',
+          type: 'withdraw',
+          category: 'Case',
+          amount: 1100,
+          createdAt: new Date('2021-02-14 09:00:00'),
+        },
+       ]
+     })
+   },
 
-    this.get('/transactions', () => {
-      return this.schema.all('transaction');
-    })
+    routes() {
+      this.namespace = 'api';
 
-    this.post('/transactions', (schema, request) => {
-      return schema.create('transaction', JSON.parse(request.requestBody));
-    })
-  }
-})
+      this.get('/transactions', () => {
+        return this.schema.all('transaction');
+      })
+
+      this.post('/transactions', (schema, request) => {
+        return schema.create('transaction', JSON.parse(request.requestBody));
+      })
+    }
+  })
 
 ReactDOM.render(
   <React.StrictMode>
