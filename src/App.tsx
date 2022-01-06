@@ -11,14 +11,14 @@ Modal.setAppElement('#root');
 
 export function App() {
     const [isNewTransctionModalOpen, setIsNewTransactionModalOpen] = useState(false);
-
-      function handleOpenNewTransactionModal() {
-          setIsNewTransactionModalOpen(true);
-      }
-
-      function handleCloseNewTransactionModal() {
-          setIsNewTransactionModalOpen(false);
-      }
+    
+    function handleOpenNewTransactionModal() {
+      setIsNewTransactionModalOpen(true);
+    }
+    
+    function handleCloseNewTransactionModal() {
+      setIsNewTransactionModalOpen(false);
+    }
 
   return (
     <TransactionsProvider>
